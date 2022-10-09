@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        li:hover{
+            background-color: steelblue;
+            transition: 0.3s linear;
+        }
+    </style>
+    <title>DashBoard</title>
+</head>
+<body class="container">
+    <div class="d-flex justify-content-between border-bottom pb-4 pt-4 pl-1 pr-1 border-success" style="z-index: 500;">
+        <div class="logo">
+            <h1 class="text-success h1">Course</h1>
+        </div>
+        <div class="d-inline-flex justify-between flex-2">
+            <div class="m-2 text-success">
+                <a href="/index.html">Home</a>
+            </div >
+            <div class="m-2 text-success">
+                <a href="/course.html">Course</a>
+            </div>
+            <div class="m-2 text-success">
+                <a href="/index.html/#about">About</a>
+            </div>
+            <div class="m-2 text-success">
+                <a href="/index.html/#register">Register</a>
+            </div>
+        </div>
+        <!-- <div class="">
+            <button class="btn btn-outline-success"> Connect </button>
+        </div> -->
+    </div>
+    <span class="h3 m-2">Name : <span class="h3 text-success" id="name"> </span> </span> <br>
+    <!-- <span class="h3 m-2">Email ID : <span class="h3 text-success" id="email"> </span> </span> -->
+    <div class="main d-flex justify-content-center flex-wrap m-3"  style="gap : 15px;">
+        <ul class="list-group" id="course_list">
+
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.0/web3.min.js" integrity="sha512-bSQ2kf76XufUYS/4XinoHLp5S4lNOyRv0/x5UJACiOMy8ueqTNwRFfUZWmWpwnczjRp9SjiF1jrXbGEim7Y0Xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        window.onload = ()=>{
+            // console.log(window.ethereum)
+            web3 = new Web3(window.ethereum)
+            let address = "0xD899523Cc1fbBC09A1E7B551eFF80d133b614721"
+            // 0xC20c5B95aA4551940d130C4c8009450785155508
+            // 0x357963147BAfd27c040E0a6130537B59d0DaC340
+           
+            let abi = [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "course",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "course_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "instructor_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "week_duration",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "total_seats",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "remaining_seats",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "courseid",
+				"type": "uint256"
+			}
+		],
+		"name": "courseCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "instructor_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "week_duration",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "total_seats",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			}
+		],
+		"name": "createCourse",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "enrol",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getCurrentStudent",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "getPriceOfCourse",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "list_of_course_id",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "list_of_course_name",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "list_of_courses_a_student_enrolled",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "email",
+				"type": "string"
+			}
+		],
+		"name": "registerStudent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "students",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "email",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "isRegister",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+            console.log(web3.eth)
+            contract = new web3.eth.Contract(abi,address);
+            
+            web3.eth.getAccounts().then(acc=>{
+            console.log(acc)
+            contract.methods.getCurrentStudent().call({from : acc[0]})
+            .then(res=>{
+                // document.querySelector('#leftseat').innerHTML = res
+                console.log(res)
+                if(res.length == 0)
+                    alert("We havent found yout account. Please register or connect.")
+                document.getElementById('name').innerText = res
+                // document.getElementById('email').innerText = res[1]
+            }).catch(err=>{
+                console.log(err)
+            })
+            contract.methods.list_of_courses_a_student_enrolled().call({from : acc[0]})
+            .then(res=>{
+                // document.querySelector('#leftseat').innerHTML = res
+
+                console.log(res)
+                res.forEach(value=>{
+                    document.getElementById('course_list').innerHTML+= `<li class="list-group-item m-2 text-start ">You are enrolled in course Id No . <span class="bg-success text-white p-2"> ${value}</span></li>`
+                })
+            }).catch(err=>{
+                console.log(err)
+            })
+        }).catch(err=>{
+            alert('error')
+        })
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Course Web Blockchain</title>
+</head>
+<body class="scrollbar-success">
+    <div class="container mt-2 scrollbar-success">
+        <div class="d-flex justify-content-between border-bottom pb-4 pt-4 pl-1 pr-1 border-success" style="z-index: 500;">
+            <div class="logo">
+                <h1 class="text-success h1">Course</h1>
+            </div>
+            <div class="d-inline-flex justify-between flex-2">
+                <div class="m-2 text-success">
+                    <a href="/">Home</a>
+                </div >
+                <div class="m-2 text-success">
+                    <a href="/course.html">Course</a>
+                </div>
+                <div class="m-2 text-success">
+                    <a href="/#about">About</a>
+                </div>
+                <div class="m-2 text-success">
+                    <a href="/#register">Register</a>
+                </div>
+                <div class="m-2 text-success">
+                    <a href="/create_course.html">Admin</a>
+                </div>
+                <div class="m-2 text-success">
+                    <a href="/dashboard.html">DashBoard</a>
+                </div>
+            </div>
+            <div class="">
+                <button class="btn btn-outline-success" id="connect"> Connect </button>
+            </div>
+        </div>
+        <div class="main d-flex">
+            <div class="text-center mt-3 w-50 pt-5">
+                <span class="h1">
+                    Find Course <br> of your choice here.
+
+                </span>
+                <br>
+                <br>
+                <br>
+                
+                <br><br>
+                <span class="h3">
+                    A blockchain based Online Course app.
+                    <br>
+                    Register yourself, buy a course and start learning.
+                </span>
+                <br>
+                <br>
+                <br>
+                <span class="bold">
+                    Make sure you have Metamask installed.
+                    If not ,go to <a href="http://metamask.io" class="text-info">Metamask</a>
+                </span>
+                <div class=" mt-5 d-flex pl-3">
+                    <a class="btn btn-success text-white p-2" href="/course.html">
+                        Browse our courses
+                    </a>
+                </div>
+            </div>
+            <div class="img-illustration text-center justify-content-center align-items-center bg-success d-flex mt-3 w-50">
+                <div class="">
+
+                    <img src="./assets/photo.png" alt="" srcset="" width="300px" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-end p-3 mt-5">
+        <div class="container d-flex justify-content-around">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://via.placeholder.com/100x50" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Title</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque .</p>
+                  <a href="#" class="btn btn-success">Buy</a>
+                </div>
+            </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://via.placeholder.com/100x50" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Title</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque .</p>
+                  <a href="#" class="btn btn-success">Buy</a>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://via.placeholder.com/100x50" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Title</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque .</p>
+                  <a href="#" class="btn btn-success">Buy</a>
+                </div>
+              </div>
+        </div>
+        <div id="register" class="  mt-5 border border-1 border-success p-3">
+            <span class="h4 p-3 mb-3">Registeration form</span>
+            <form id="registerfrom" onsubmit="submithandler(event)">
+                <div class="form-group p-3">
+                  <label >Email address</label>
+                  <input type="email" class="form-control" id="Email1" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group p-3">
+                    <label >Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    
+                  </div>
+                <button type="submit" class="btn btn-outline-success m-3">Submit</button>
+              </form>
+        </div>
+        <div class="footer d-flex justify-content-center align-items-center bg-success text-white mt-4" style="height: 40vh;" id="about">
+            <span class="h3">
+                This is a sample blockchain implementation. <br>
+                Code for this available at <a href="https://github.com/khulalit" class="text-info">Repo</a>
+            </span>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.0/web3.min.js" integrity="sha512-bSQ2kf76XufUYS/4XinoHLp5S4lNOyRv0/x5UJACiOMy8ueqTNwRFfUZWmWpwnczjRp9SjiF1jrXbGEim7Y0Xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        if (typeof window.ethereum == 'undefined') {
+            alert('MetaMask is not installed!Please install.');
+        }
+        
+        document.querySelector('#connect').addEventListener('click', () => {
+            //Will Start the metamask extension
+            console.log(ethereum._state.accounts)
+            if(ethereum._state.accounts.length > 0){
+
+                document.getElementById('connect').innerText = ethereum._state.accounts[0]
+            }
+            ethereum.request({ method: 'eth_requestAccounts' });
+        });
+    </script>
+    <script  src="./app.js"></script>
+</body>
+</html>
